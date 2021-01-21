@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="${package}#if(${moduleName}).${moduleName}#end.mapper.${className}Mapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="${package}#if(${moduleName}).${moduleName}#end.entity.${className}" id="${classname}Map">
+        #foreach($column in $columns)
+            <result property="${column.lowerAttrName}" column="${column.columnName}"/>
+        #end
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    #foreach($column in $columns)
+        ${tableName}.${column.columnName}#if($foreach.hasNext),#end
+    #end
+    </sql>
+
+    <sql id="Example_If_Clause">
+        #foreach($column in $columns)
+            <if test="${classname}.${column.lowerAttrName} != null and ${classname}.${column.lowerAttrName}  != ''">
+                and ${tableName}.${column.columnName} = #{${classname}.${column.lowerAttrName}}
+            </if>
+        #end
+    </sql>
+
+    <select id="query" resultMap="${classname}Map">
+        select
+        <include refid="Base_Column_List"/>
+        from ${tableName}
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

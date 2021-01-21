@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.CompanyInfoMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.CompanyInfo" id="companyInfoMap">
+            <result property="id" column="id"/>
+            <result property="comName" column="com_name"/>
+            <result property="status" column="status"/>
+            <result property="legalName" column="legal_name"/>
+            <result property="comType" column="com_type"/>
+            <result property="comAddress" column="com_address"/>
+            <result property="lng" column="lng"/>
+            <result property="lat" column="lat"/>
+            <result property="regNo" column="reg_no"/>
+            <result property="regAmt" column="reg_amt"/>
+            <result property="regTime" column="reg_time"/>
+            <result property="regOrg" column="reg_org"/>
+            <result property="bizScope" column="biz_scope"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        company_info.id,
+        company_info.com_name,
+        company_info.status,
+        company_info.legal_name,
+        company_info.com_type,
+        company_info.com_address,
+        company_info.lng,
+        company_info.lat,
+        company_info.reg_no,
+        company_info.reg_amt,
+        company_info.reg_time,
+        company_info.reg_org,
+        company_info.biz_scope,
+        company_info.create_time,
+        company_info.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="companyInfo.id != null and companyInfo.id  != ''">
+                and company_info.id = #{companyInfo.id}
+            </if>
+            <if test="companyInfo.comName != null and companyInfo.comName  != ''">
+                and company_info.com_name = #{companyInfo.comName}
+            </if>
+            <if test="companyInfo.status != null and companyInfo.status  != ''">
+                and company_info.status = #{companyInfo.status}
+            </if>
+            <if test="companyInfo.legalName != null and companyInfo.legalName  != ''">
+                and company_info.legal_name = #{companyInfo.legalName}
+            </if>
+            <if test="companyInfo.comType != null and companyInfo.comType  != ''">
+                and company_info.com_type = #{companyInfo.comType}
+            </if>
+            <if test="companyInfo.comAddress != null and companyInfo.comAddress  != ''">
+                and company_info.com_address = #{companyInfo.comAddress}
+            </if>
+            <if test="companyInfo.lng != null and companyInfo.lng  != ''">
+                and company_info.lng = #{companyInfo.lng}
+            </if>
+            <if test="companyInfo.lat != null and companyInfo.lat  != ''">
+                and company_info.lat = #{companyInfo.lat}
+            </if>
+            <if test="companyInfo.regNo != null and companyInfo.regNo  != ''">
+                and company_info.reg_no = #{companyInfo.regNo}
+            </if>
+            <if test="companyInfo.regAmt != null and companyInfo.regAmt  != ''">
+                and company_info.reg_amt = #{companyInfo.regAmt}
+            </if>
+            <if test="companyInfo.regTime != null and companyInfo.regTime  != ''">
+                and company_info.reg_time = #{companyInfo.regTime}
+            </if>
+            <if test="companyInfo.regOrg != null and companyInfo.regOrg  != ''">
+                and company_info.reg_org = #{companyInfo.regOrg}
+            </if>
+            <if test="companyInfo.bizScope != null and companyInfo.bizScope  != ''">
+                and company_info.biz_scope = #{companyInfo.bizScope}
+            </if>
+            <if test="companyInfo.createTime != null and companyInfo.createTime  != ''">
+                and company_info.create_time = #{companyInfo.createTime}
+            </if>
+            <if test="companyInfo.updateTime != null and companyInfo.updateTime  != ''">
+                and company_info.update_time = #{companyInfo.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="companyInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from company_info
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

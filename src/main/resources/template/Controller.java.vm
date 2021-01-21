@@ -1,0 +1,98 @@
+package ${package}#if(${moduleName}).${moduleName}#end.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import ${package}#if(${moduleName}).${moduleName}#end.entity.${className};
+import ${package}#if(${moduleName}).${moduleName}#end.service.${className}Service;
+import com.sunyard.emp.entity.CommonResponse;
+import com.sunyard.emp.entity.PageAndWrapper;
+import com.sunyard.emp.utils.PageAndWrapperUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+import java.util.Map;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @version  ${datetime}
+ */
+@Api(tags = "${comments}")
+@RestController
+@RequestMapping("/${classname}")
+public class ${className}Controller {
+
+    @Autowired
+    private ${className}Service ${classname}Service;
+
+    /**
+    *  带查询条件和分页的列表
+    * @param params 参数
+    * @return 根据查询条件查出的${comments}分页列表
+    */
+    @PostMapping("/page")
+    @ApiOperation(value = "${comments}条件分页列表")
+    public CommonResponse page(@RequestBody Map<String, Object> params) {
+        PageAndWrapper<${className}> pageAndWrapper = PageAndWrapperUtil.getPage(params, ${className}.class);
+        return new CommonResponse(${classname}Service.page(pageAndWrapper.getPage(), pageAndWrapper.getQueryWrapper()));
+    }
+
+    /**
+      * 带查询条件的列表
+      * @param  ${classname} 查询条件
+      * @return 根据查询条件查出的${comments}列表
+      */
+    @PostMapping("/list")
+    @ApiOperation(value = "${comments}条件查询列表")
+    public CommonResponse list(@RequestBody ${className} ${classname}) {
+        return new CommonResponse(${classname}Service.list(new QueryWrapper<>(${classname})));
+    }
+
+    /**
+     * 信息
+     * @param ${pk.lowerAttrName} 要查询的${comments}id
+     * @return CommonResponse 根据id查询的${comments}信息
+     */
+    @GetMapping("/{${pk.lowerAttrName}}")
+    @ApiOperation(value = "${comments}根据id查询信息")
+    public CommonResponse info(@PathVariable("${pk.lowerAttrName}") ${pk.attrType} ${pk.lowerAttrName}) {
+        ${className} ${classname} = ${classname}Service.getById(${pk.lowerAttrName});
+        return new CommonResponse<>(${classname});
+    }
+
+    /**
+     * 保存
+     * @param ${classname} 需要新增的${comments}信息
+     * @return CommonResponse 是否新增成功
+     */
+    @PostMapping
+    @ApiOperation(value = "${comments}保存")
+    public CommonResponse save(@RequestBody ${className} ${classname}) {
+        return new CommonResponse<>(${classname}Service.save(${classname}));
+    }
+
+    /**
+     * 修改
+     * @param ${classname} 需要更新的${comments}信息
+     * @return CommonResponse 是否修改成功
+     */
+    @PutMapping
+    @ApiOperation(value = "${comments}修改")
+    public CommonResponse update(@RequestBody ${className} ${classname}) {
+        return new CommonResponse<>(${classname}Service.updateById(${classname}));
+    }
+
+    /**
+     * 删除
+     * @param ${pk.lowerAttrName} 需要删除的${comments}id
+     * @return CommonResponse 是否删除成功
+     */
+    @DeleteMapping("/{${pk.lowerAttrName}}")
+    @ApiOperation(value = "${comments}根据id删除")
+    public CommonResponse delete(@PathVariable ${pk.attrType} ${pk.lowerAttrName}) {
+        return new CommonResponse<>(${classname}Service.removeById(${pk.lowerAttrName}));
+    }
+
+}

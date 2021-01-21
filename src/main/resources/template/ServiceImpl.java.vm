@@ -1,0 +1,30 @@
+package ${package}#if(${moduleName}).${moduleName}#end.service.impl;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.AllArgsConstructor;import org.springframework.stereotype.Service;
+import ${package}#if(${moduleName}).${moduleName}#end.mapper.${className}Mapper;
+import ${package}#if(${moduleName}).${moduleName}#end.entity.${className};
+import ${package}#if(${moduleName}).${moduleName}#end.service.${className}Service;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @version ${datetime}
+ */
+@Transactional
+@Service("${classname}Service")
+@AllArgsConstructor
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
+
+    private final ${className}Mapper dao;
+
+    @Override
+    public IPage<${className}> queryList(Page<${className}> page, ${className} ${classname}){
+        return dao.query(page,${classname});
+    }
+
+}
