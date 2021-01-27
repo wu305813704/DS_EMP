@@ -1,10 +1,10 @@
 package com.sunyard.emp.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.sunyard.emp.entity.CommonResponse;
 import com.sunyard.emp.entity.CompanyInfo;
-import com.sunyard.emp.entity.PageAndWrapper;
 import com.sunyard.emp.service.CompanyInfoService;
+import com.sunyard.emp.entity.CommonResponse;
+import com.sunyard.emp.entity.PageAndWrapper;
 import com.sunyard.emp.utils.PageAndWrapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ import java.util.Map;
  * 企业基本信息
  *
  * @author KouKi
- * @version  2021-01-21 14:27:44
+ * @version  2021-01-27 16:26:39
  */
 @Api(tags = "企业基本信息")
 @RestController

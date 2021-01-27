@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * 企业基本信息
  *
  * @author KouKi
- * @version 2021-01-21 14:27:44
+ * @version 2021-01-27 16:26:39
  */
 public interface CompanyInfoService extends IService<CompanyInfo> {
     /**

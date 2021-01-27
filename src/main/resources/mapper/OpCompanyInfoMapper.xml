@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.OpCompanyInfoMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.OpCompanyInfo" id="opCompanyInfoMap">
+            <result property="id" column="id"/>
+            <result property="comName" column="com_name"/>
+            <result property="regNo" column="reg_no"/>
+            <result property="opComName" column="op_com_name"/>
+            <result property="opRegAmt" column="op_reg_amt"/>
+            <result property="opRegCurrency" column="op_reg_currency"/>
+            <result property="opLegalName" column="op_legal_name"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        op_company_info.id,
+        op_company_info.com_name,
+        op_company_info.reg_no,
+        op_company_info.op_com_name,
+        op_company_info.op_reg_amt,
+        op_company_info.op_reg_currency,
+        op_company_info.op_legal_name
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="opCompanyInfo.id != null and opCompanyInfo.id  != ''">
+                and op_company_info.id = #{opCompanyInfo.id}
+            </if>
+            <if test="opCompanyInfo.comName != null and opCompanyInfo.comName  != ''">
+                and op_company_info.com_name = #{opCompanyInfo.comName}
+            </if>
+            <if test="opCompanyInfo.regNo != null and opCompanyInfo.regNo  != ''">
+                and op_company_info.reg_no = #{opCompanyInfo.regNo}
+            </if>
+            <if test="opCompanyInfo.opComName != null and opCompanyInfo.opComName  != ''">
+                and op_company_info.op_com_name = #{opCompanyInfo.opComName}
+            </if>
+            <if test="opCompanyInfo.opRegAmt != null and opCompanyInfo.opRegAmt  != ''">
+                and op_company_info.op_reg_amt = #{opCompanyInfo.opRegAmt}
+            </if>
+            <if test="opCompanyInfo.opRegCurrency != null and opCompanyInfo.opRegCurrency  != ''">
+                and op_company_info.op_reg_currency = #{opCompanyInfo.opRegCurrency}
+            </if>
+            <if test="opCompanyInfo.opLegalName != null and opCompanyInfo.opLegalName  != ''">
+                and op_company_info.op_legal_name = #{opCompanyInfo.opLegalName}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="opCompanyInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from op_company_info
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

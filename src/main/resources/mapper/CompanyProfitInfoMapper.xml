@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.CompanyProfitInfoMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.CompanyProfitInfo" id="companyProfitInfoMap">
+            <result property="id" column="id"/>
+            <result property="regNo" column="reg_no"/>
+            <result property="sellMonth" column="sell_month"/>
+            <result property="sellAmt" column="sell_amt"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        company_profit_info.id,
+        company_profit_info.reg_no,
+        company_profit_info.sell_month,
+        company_profit_info.sell_amt,
+        company_profit_info.create_time,
+        company_profit_info.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="companyProfitInfo.id != null and companyProfitInfo.id  != ''">
+                and company_profit_info.id = #{companyProfitInfo.id}
+            </if>
+            <if test="companyProfitInfo.regNo != null and companyProfitInfo.regNo  != ''">
+                and company_profit_info.reg_no = #{companyProfitInfo.regNo}
+            </if>
+            <if test="companyProfitInfo.sellMonth != null and companyProfitInfo.sellMonth  != ''">
+                and company_profit_info.sell_month = #{companyProfitInfo.sellMonth}
+            </if>
+            <if test="companyProfitInfo.sellAmt != null and companyProfitInfo.sellAmt  != ''">
+                and company_profit_info.sell_amt = #{companyProfitInfo.sellAmt}
+            </if>
+            <if test="companyProfitInfo.createTime != null and companyProfitInfo.createTime  != ''">
+                and company_profit_info.create_time = #{companyProfitInfo.createTime}
+            </if>
+            <if test="companyProfitInfo.updateTime != null and companyProfitInfo.updateTime  != ''">
+                and company_profit_info.update_time = #{companyProfitInfo.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="companyProfitInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from company_profit_info
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

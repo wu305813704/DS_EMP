@@ -86,9 +86,6 @@ public class CommonResponse<T> implements Serializable {
     }
 
     public CommonResponse<T> setCode(String code) {
-        if(ErrorCodeEnum.CUSTOMER_SUCCESS.getRecode().equals(code)){
-            code = ErrorCodeEnum.SUCCESS.getRecode();
-        }
         this.recode = code;
         return this;
     }

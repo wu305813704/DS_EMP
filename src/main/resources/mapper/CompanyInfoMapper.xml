@@ -9,6 +9,7 @@
             <result property="comName" column="com_name"/>
             <result property="status" column="status"/>
             <result property="legalName" column="legal_name"/>
+            <result property="legalCardNo" column="legal_card_no"/>
             <result property="comType" column="com_type"/>
             <result property="comAddress" column="com_address"/>
             <result property="lng" column="lng"/>
@@ -18,6 +19,9 @@
             <result property="regTime" column="reg_time"/>
             <result property="regOrg" column="reg_org"/>
             <result property="bizScope" column="biz_scope"/>
+            <result property="industryType" column="industry_type"/>
+            <result property="towns" column="towns"/>
+            <result property="mu" column="mu"/>
             <result property="createTime" column="create_time"/>
             <result property="updateTime" column="update_time"/>
     </resultMap>
@@ -27,6 +31,7 @@
         company_info.com_name,
         company_info.status,
         company_info.legal_name,
+        company_info.legal_card_no,
         company_info.com_type,
         company_info.com_address,
         company_info.lng,
@@ -36,6 +41,9 @@
         company_info.reg_time,
         company_info.reg_org,
         company_info.biz_scope,
+        company_info.industry_type,
+        company_info.towns,
+        company_info.mu,
         company_info.create_time,
         company_info.update_time
     </sql>
@@ -52,6 +60,9 @@
             </if>
             <if test="companyInfo.legalName != null and companyInfo.legalName  != ''">
                 and company_info.legal_name = #{companyInfo.legalName}
+            </if>
+            <if test="companyInfo.legalCardNo != null and companyInfo.legalCardNo  != ''">
+                and company_info.legal_card_no = #{companyInfo.legalCardNo}
             </if>
             <if test="companyInfo.comType != null and companyInfo.comType  != ''">
                 and company_info.com_type = #{companyInfo.comType}
@@ -79,6 +90,15 @@
             </if>
             <if test="companyInfo.bizScope != null and companyInfo.bizScope  != ''">
                 and company_info.biz_scope = #{companyInfo.bizScope}
+            </if>
+            <if test="companyInfo.industryType != null and companyInfo.industryType  != ''">
+                and company_info.industry_type = #{companyInfo.industryType}
+            </if>
+            <if test="companyInfo.towns != null and companyInfo.towns  != ''">
+                and company_info.towns = #{companyInfo.towns}
+            </if>
+            <if test="companyInfo.mu != null and companyInfo.mu  != ''">
+                and company_info.mu = #{companyInfo.mu}
             </if>
             <if test="companyInfo.createTime != null and companyInfo.createTime  != ''">
                 and company_info.create_time = #{companyInfo.createTime}

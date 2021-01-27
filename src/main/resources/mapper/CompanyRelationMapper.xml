@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.CompanyRelationMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.CompanyRelation" id="companyRelationMap">
+            <result property="id" column="id"/>
+            <result property="regNo" column="reg_no"/>
+            <result property="type" column="type"/>
+            <result property="name" column="name"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        company_relation.id,
+        company_relation.reg_no,
+        company_relation.type,
+        company_relation.name,
+        company_relation.create_time,
+        company_relation.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="companyRelation.id != null and companyRelation.id  != ''">
+                and company_relation.id = #{companyRelation.id}
+            </if>
+            <if test="companyRelation.regNo != null and companyRelation.regNo  != ''">
+                and company_relation.reg_no = #{companyRelation.regNo}
+            </if>
+            <if test="companyRelation.type != null and companyRelation.type  != ''">
+                and company_relation.type = #{companyRelation.type}
+            </if>
+            <if test="companyRelation.name != null and companyRelation.name  != ''">
+                and company_relation.name = #{companyRelation.name}
+            </if>
+            <if test="companyRelation.createTime != null and companyRelation.createTime  != ''">
+                and company_relation.create_time = #{companyRelation.createTime}
+            </if>
+            <if test="companyRelation.updateTime != null and companyRelation.updateTime  != ''">
+                and company_relation.update_time = #{companyRelation.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="companyRelationMap">
+        select
+        <include refid="Base_Column_List"/>
+        from company_relation
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

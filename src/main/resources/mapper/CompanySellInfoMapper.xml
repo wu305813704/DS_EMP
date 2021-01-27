@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.CompanySellInfoMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.CompanySellInfo" id="companySellInfoMap">
+            <result property="id" column="id"/>
+            <result property="regNo" column="reg_no"/>
+            <result property="sellMonth" column="sell_month"/>
+            <result property="sellAmt" column="sell_amt"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        company_sell_info.id,
+        company_sell_info.reg_no,
+        company_sell_info.sell_month,
+        company_sell_info.sell_amt,
+        company_sell_info.create_time,
+        company_sell_info.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="companySellInfo.id != null and companySellInfo.id  != ''">
+                and company_sell_info.id = #{companySellInfo.id}
+            </if>
+            <if test="companySellInfo.regNo != null and companySellInfo.regNo  != ''">
+                and company_sell_info.reg_no = #{companySellInfo.regNo}
+            </if>
+            <if test="companySellInfo.sellMonth != null and companySellInfo.sellMonth  != ''">
+                and company_sell_info.sell_month = #{companySellInfo.sellMonth}
+            </if>
+            <if test="companySellInfo.sellAmt != null and companySellInfo.sellAmt  != ''">
+                and company_sell_info.sell_amt = #{companySellInfo.sellAmt}
+            </if>
+            <if test="companySellInfo.createTime != null and companySellInfo.createTime  != ''">
+                and company_sell_info.create_time = #{companySellInfo.createTime}
+            </if>
+            <if test="companySellInfo.updateTime != null and companySellInfo.updateTime  != ''">
+                and company_sell_info.update_time = #{companySellInfo.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="companySellInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from company_sell_info
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

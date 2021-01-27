@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.OpCompanyInfoLegalMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.OpCompanyInfoLegal" id="opCompanyInfoLegalMap">
+            <result property="id" column="id"/>
+            <result property="legalName" column="legal_name"/>
+            <result property="legalCardNo" column="legal_card_no"/>
+            <result property="opComName" column="op_com_name"/>
+            <result property="opLegalNae" column="op_legal_nae"/>
+            <result property="opComType" column="op_com_type"/>
+            <result property="opRegNo" column="op_reg_no"/>
+            <result property="opStatus" column="op_status"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        op_company_info_legal.id,
+        op_company_info_legal.legal_name,
+        op_company_info_legal.legal_card_no,
+        op_company_info_legal.op_com_name,
+        op_company_info_legal.op_legal_nae,
+        op_company_info_legal.op_com_type,
+        op_company_info_legal.op_reg_no,
+        op_company_info_legal.op_status,
+        op_company_info_legal.create_time,
+        op_company_info_legal.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="opCompanyInfoLegal.id != null and opCompanyInfoLegal.id  != ''">
+                and op_company_info_legal.id = #{opCompanyInfoLegal.id}
+            </if>
+            <if test="opCompanyInfoLegal.legalName != null and opCompanyInfoLegal.legalName  != ''">
+                and op_company_info_legal.legal_name = #{opCompanyInfoLegal.legalName}
+            </if>
+            <if test="opCompanyInfoLegal.legalCardNo != null and opCompanyInfoLegal.legalCardNo  != ''">
+                and op_company_info_legal.legal_card_no = #{opCompanyInfoLegal.legalCardNo}
+            </if>
+            <if test="opCompanyInfoLegal.opComName != null and opCompanyInfoLegal.opComName  != ''">
+                and op_company_info_legal.op_com_name = #{opCompanyInfoLegal.opComName}
+            </if>
+            <if test="opCompanyInfoLegal.opLegalNae != null and opCompanyInfoLegal.opLegalNae  != ''">
+                and op_company_info_legal.op_legal_nae = #{opCompanyInfoLegal.opLegalNae}
+            </if>
+            <if test="opCompanyInfoLegal.opComType != null and opCompanyInfoLegal.opComType  != ''">
+                and op_company_info_legal.op_com_type = #{opCompanyInfoLegal.opComType}
+            </if>
+            <if test="opCompanyInfoLegal.opRegNo != null and opCompanyInfoLegal.opRegNo  != ''">
+                and op_company_info_legal.op_reg_no = #{opCompanyInfoLegal.opRegNo}
+            </if>
+            <if test="opCompanyInfoLegal.opStatus != null and opCompanyInfoLegal.opStatus  != ''">
+                and op_company_info_legal.op_status = #{opCompanyInfoLegal.opStatus}
+            </if>
+            <if test="opCompanyInfoLegal.createTime != null and opCompanyInfoLegal.createTime  != ''">
+                and op_company_info_legal.create_time = #{opCompanyInfoLegal.createTime}
+            </if>
+            <if test="opCompanyInfoLegal.updateTime != null and opCompanyInfoLegal.updateTime  != ''">
+                and op_company_info_legal.update_time = #{opCompanyInfoLegal.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="opCompanyInfoLegalMap">
+        select
+        <include refid="Base_Column_List"/>
+        from op_company_info_legal
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>
