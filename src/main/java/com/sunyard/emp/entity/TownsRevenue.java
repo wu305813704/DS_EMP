@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  * 乡镇亩均税收
  *
  * @author KouKi
- * @version 2021-02-01 12:21:19
+ * @version 2021-02-01 17:44:06
  */
 @Data
 @Builder
@@ -42,7 +42,7 @@ public class TownsRevenue extends Model<TownsRevenue> {
      * 亩均税收
      */
     @ApiModelProperty(value = "亩均税收")
-    private String revenue;
+    private Integer revenue;
     /**
      *
      */

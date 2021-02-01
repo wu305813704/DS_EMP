@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  * 企业税收排名
  *
  * @author KouKi
- * @version 2021-02-01 12:35:05
+ * @version 2021-02-01 17:45:49
  */
 @Data
 @Builder
@@ -47,7 +47,7 @@ public class CompanyRevenueRank extends Model<CompanyRevenueRank> {
      * 税收(万元)
      */
     @ApiModelProperty(value = "税收(万元)")
-    private String revenue;
+    private Integer revenue;
     /**
      *
      */
