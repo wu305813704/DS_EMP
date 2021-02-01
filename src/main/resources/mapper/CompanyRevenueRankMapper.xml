@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.CompanyRevenueRankMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.CompanyRevenueRank" id="companyRevenueRankMap">
+            <result property="id" column="id"/>
+            <result property="companyName" column="company_name"/>
+            <result property="rank" column="rank"/>
+            <result property="revenue" column="revenue"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        company_revenue_rank.id,
+        company_revenue_rank.company_name,
+        company_revenue_rank.rank,
+        company_revenue_rank.revenue,
+        company_revenue_rank.create_time,
+        company_revenue_rank.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="companyRevenueRank.id != null and companyRevenueRank.id  != ''">
+                and company_revenue_rank.id = #{companyRevenueRank.id}
+            </if>
+            <if test="companyRevenueRank.companyName != null and companyRevenueRank.companyName  != ''">
+                and company_revenue_rank.company_name = #{companyRevenueRank.companyName}
+            </if>
+            <if test="companyRevenueRank.rank != null and companyRevenueRank.rank  != ''">
+                and company_revenue_rank.rank = #{companyRevenueRank.rank}
+            </if>
+            <if test="companyRevenueRank.revenue != null and companyRevenueRank.revenue  != ''">
+                and company_revenue_rank.revenue = #{companyRevenueRank.revenue}
+            </if>
+            <if test="companyRevenueRank.createTime != null and companyRevenueRank.createTime  != ''">
+                and company_revenue_rank.create_time = #{companyRevenueRank.createTime}
+            </if>
+            <if test="companyRevenueRank.updateTime != null and companyRevenueRank.updateTime  != ''">
+                and company_revenue_rank.update_time = #{companyRevenueRank.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="companyRevenueRankMap">
+        select
+        <include refid="Base_Column_List"/>
+        from company_revenue_rank
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.TownsCoversMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.TownsCovers" id="townsCoversMap">
+            <result property="id" column="id"/>
+            <result property="towns" column="towns"/>
+            <result property="companyCount" column="company_count"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        towns_covers.id,
+        towns_covers.towns,
+        towns_covers.company_count,
+        towns_covers.create_time,
+        towns_covers.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="townsCovers.id != null and townsCovers.id  != ''">
+                and towns_covers.id = #{townsCovers.id}
+            </if>
+            <if test="townsCovers.towns != null and townsCovers.towns  != ''">
+                and towns_covers.towns = #{townsCovers.towns}
+            </if>
+            <if test="townsCovers.companyCount != null and townsCovers.companyCount  != ''">
+                and towns_covers.company_count = #{townsCovers.companyCount}
+            </if>
+            <if test="townsCovers.createTime != null and townsCovers.createTime  != ''">
+                and towns_covers.create_time = #{townsCovers.createTime}
+            </if>
+            <if test="townsCovers.updateTime != null and townsCovers.updateTime  != ''">
+                and towns_covers.update_time = #{townsCovers.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="townsCoversMap">
+        select
+        <include refid="Base_Column_List"/>
+        from towns_covers
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

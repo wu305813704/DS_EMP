@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.CompanyBigDataMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.CompanyBigData" id="companyBigDataMap">
+            <result property="id" column="id"/>
+            <result property="companyTotal" column="company_total"/>
+            <result property="profitTotal" column="profit_total"/>
+            <result property="pollutionTotal" column="pollution_total"/>
+            <result property="companyTotalGs" column="company_total_gs"/>
+            <result property="revenueTotal" column="revenue_total"/>
+            <result property="exhaustTotal" column="exhaust_total"/>
+            <result property="area" column="area"/>
+            <result property="revenueMu" column="revenue_mu"/>
+            <result property="effluentTotal" column="effluent_total"/>
+            <result property="proportionGs" column="proportion_gs"/>
+            <result property="profitMu" column="profit_mu"/>
+            <result property="energyTotal" column="energy_total"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        company_big_data.id,
+        company_big_data.company_total,
+        company_big_data.profit_total,
+        company_big_data.pollution_total,
+        company_big_data.company_total_gs,
+        company_big_data.revenue_total,
+        company_big_data.exhaust_total,
+        company_big_data.area,
+        company_big_data.revenue_mu,
+        company_big_data.effluent_total,
+        company_big_data.proportion_gs,
+        company_big_data.profit_mu,
+        company_big_data.energy_total,
+        company_big_data.create_time,
+        company_big_data.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="companyBigData.id != null and companyBigData.id  != ''">
+                and company_big_data.id = #{companyBigData.id}
+            </if>
+            <if test="companyBigData.companyTotal != null and companyBigData.companyTotal  != ''">
+                and company_big_data.company_total = #{companyBigData.companyTotal}
+            </if>
+            <if test="companyBigData.profitTotal != null and companyBigData.profitTotal  != ''">
+                and company_big_data.profit_total = #{companyBigData.profitTotal}
+            </if>
+            <if test="companyBigData.pollutionTotal != null and companyBigData.pollutionTotal  != ''">
+                and company_big_data.pollution_total = #{companyBigData.pollutionTotal}
+            </if>
+            <if test="companyBigData.companyTotalGs != null and companyBigData.companyTotalGs  != ''">
+                and company_big_data.company_total_gs = #{companyBigData.companyTotalGs}
+            </if>
+            <if test="companyBigData.revenueTotal != null and companyBigData.revenueTotal  != ''">
+                and company_big_data.revenue_total = #{companyBigData.revenueTotal}
+            </if>
+            <if test="companyBigData.exhaustTotal != null and companyBigData.exhaustTotal  != ''">
+                and company_big_data.exhaust_total = #{companyBigData.exhaustTotal}
+            </if>
+            <if test="companyBigData.area != null and companyBigData.area  != ''">
+                and company_big_data.area = #{companyBigData.area}
+            </if>
+            <if test="companyBigData.revenueMu != null and companyBigData.revenueMu  != ''">
+                and company_big_data.revenue_mu = #{companyBigData.revenueMu}
+            </if>
+            <if test="companyBigData.effluentTotal != null and companyBigData.effluentTotal  != ''">
+                and company_big_data.effluent_total = #{companyBigData.effluentTotal}
+            </if>
+            <if test="companyBigData.proportionGs != null and companyBigData.proportionGs  != ''">
+                and company_big_data.proportion_gs = #{companyBigData.proportionGs}
+            </if>
+            <if test="companyBigData.profitMu != null and companyBigData.profitMu  != ''">
+                and company_big_data.profit_mu = #{companyBigData.profitMu}
+            </if>
+            <if test="companyBigData.energyTotal != null and companyBigData.energyTotal  != ''">
+                and company_big_data.energy_total = #{companyBigData.energyTotal}
+            </if>
+            <if test="companyBigData.createTime != null and companyBigData.createTime  != ''">
+                and company_big_data.create_time = #{companyBigData.createTime}
+            </if>
+            <if test="companyBigData.updateTime != null and companyBigData.updateTime  != ''">
+                and company_big_data.update_time = #{companyBigData.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="companyBigDataMap">
+        select
+        <include refid="Base_Column_List"/>
+        from company_big_data
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

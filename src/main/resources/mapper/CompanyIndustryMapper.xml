@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.CompanyIndustryMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.CompanyIndustry" id="companyIndustryMap">
+            <result property="id" column="id"/>
+            <result property="industry" column="industry"/>
+            <result property="companyCount" column="company_count"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        company_industry.id,
+        company_industry.industry,
+        company_industry.company_count,
+        company_industry.create_time,
+        company_industry.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="companyIndustry.id != null and companyIndustry.id  != ''">
+                and company_industry.id = #{companyIndustry.id}
+            </if>
+            <if test="companyIndustry.industry != null and companyIndustry.industry  != ''">
+                and company_industry.industry = #{companyIndustry.industry}
+            </if>
+            <if test="companyIndustry.companyCount != null and companyIndustry.companyCount  != ''">
+                and company_industry.company_count = #{companyIndustry.companyCount}
+            </if>
+            <if test="companyIndustry.createTime != null and companyIndustry.createTime  != ''">
+                and company_industry.create_time = #{companyIndustry.createTime}
+            </if>
+            <if test="companyIndustry.updateTime != null and companyIndustry.updateTime  != ''">
+                and company_industry.update_time = #{companyIndustry.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="companyIndustryMap">
+        select
+        <include refid="Base_Column_List"/>
+        from company_industry
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

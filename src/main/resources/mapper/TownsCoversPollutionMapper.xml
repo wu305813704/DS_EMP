@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.TownsCoversPollutionMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.TownsCoversPollution" id="townsCoversPollutionMap">
+            <result property="id" column="id"/>
+            <result property="towns" column="towns"/>
+            <result property="companyCount" column="company_count"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        towns_covers_pollution.id,
+        towns_covers_pollution.towns,
+        towns_covers_pollution.company_count,
+        towns_covers_pollution.create_time,
+        towns_covers_pollution.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="townsCoversPollution.id != null and townsCoversPollution.id  != ''">
+                and towns_covers_pollution.id = #{townsCoversPollution.id}
+            </if>
+            <if test="townsCoversPollution.towns != null and townsCoversPollution.towns  != ''">
+                and towns_covers_pollution.towns = #{townsCoversPollution.towns}
+            </if>
+            <if test="townsCoversPollution.companyCount != null and townsCoversPollution.companyCount  != ''">
+                and towns_covers_pollution.company_count = #{townsCoversPollution.companyCount}
+            </if>
+            <if test="townsCoversPollution.createTime != null and townsCoversPollution.createTime  != ''">
+                and towns_covers_pollution.create_time = #{townsCoversPollution.createTime}
+            </if>
+            <if test="townsCoversPollution.updateTime != null and townsCoversPollution.updateTime  != ''">
+                and towns_covers_pollution.update_time = #{townsCoversPollution.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="townsCoversPollutionMap">
+        select
+        <include refid="Base_Column_List"/>
+        from towns_covers_pollution
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

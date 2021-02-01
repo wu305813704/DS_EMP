@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.AreaCoversMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.AreaCovers" id="areaCoversMap">
+            <result property="id" column="id"/>
+            <result property="towns" column="towns"/>
+            <result property="gycr" column="gycr"/>
+            <result property="ncjt" column="ncjt"/>
+            <result property="other" column="other"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        area_covers.id,
+        area_covers.towns,
+        area_covers.gycr,
+        area_covers.ncjt,
+        area_covers.other,
+        area_covers.create_time,
+        area_covers.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="areaCovers.id != null and areaCovers.id  != ''">
+                and area_covers.id = #{areaCovers.id}
+            </if>
+            <if test="areaCovers.towns != null and areaCovers.towns  != ''">
+                and area_covers.towns = #{areaCovers.towns}
+            </if>
+            <if test="areaCovers.gycr != null and areaCovers.gycr  != ''">
+                and area_covers.gycr = #{areaCovers.gycr}
+            </if>
+            <if test="areaCovers.ncjt != null and areaCovers.ncjt  != ''">
+                and area_covers.ncjt = #{areaCovers.ncjt}
+            </if>
+            <if test="areaCovers.other != null and areaCovers.other  != ''">
+                and area_covers.other = #{areaCovers.other}
+            </if>
+            <if test="areaCovers.createTime != null and areaCovers.createTime  != ''">
+                and area_covers.create_time = #{areaCovers.createTime}
+            </if>
+            <if test="areaCovers.updateTime != null and areaCovers.updateTime  != ''">
+                and area_covers.update_time = #{areaCovers.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="areaCoversMap">
+        select
+        <include refid="Base_Column_List"/>
+        from area_covers
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

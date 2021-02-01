@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.TownsRevenueMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.TownsRevenue" id="townsRevenueMap">
+            <result property="id" column="id"/>
+            <result property="towns" column="towns"/>
+            <result property="revenue" column="revenue"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        towns_revenue.id,
+        towns_revenue.towns,
+        towns_revenue.revenue,
+        towns_revenue.create_time,
+        towns_revenue.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="townsRevenue.id != null and townsRevenue.id  != ''">
+                and towns_revenue.id = #{townsRevenue.id}
+            </if>
+            <if test="townsRevenue.towns != null and townsRevenue.towns  != ''">
+                and towns_revenue.towns = #{townsRevenue.towns}
+            </if>
+            <if test="townsRevenue.revenue != null and townsRevenue.revenue  != ''">
+                and towns_revenue.revenue = #{townsRevenue.revenue}
+            </if>
+            <if test="townsRevenue.createTime != null and townsRevenue.createTime  != ''">
+                and towns_revenue.create_time = #{townsRevenue.createTime}
+            </if>
+            <if test="townsRevenue.updateTime != null and townsRevenue.updateTime  != ''">
+                and towns_revenue.update_time = #{townsRevenue.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="townsRevenueMap">
+        select
+        <include refid="Base_Column_List"/>
+        from towns_revenue
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>
