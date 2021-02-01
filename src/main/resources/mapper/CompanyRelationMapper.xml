@@ -8,6 +8,11 @@
             <result property="id" column="id"/>
             <result property="regNo" column="reg_no"/>
             <result property="type" column="type"/>
+            <result property="x" column="x"/>
+            <result property="y" column="y"/>
+            <result property="targetId" column="target_id"/>
+            <result property="color" column="color"/>
+            <result property="colorLine" column="color_line"/>
             <result property="name" column="name"/>
             <result property="createTime" column="create_time"/>
             <result property="updateTime" column="update_time"/>
@@ -17,6 +22,11 @@
         company_relation.id,
         company_relation.reg_no,
         company_relation.type,
+        company_relation.x,
+        company_relation.y,
+        company_relation.target_id,
+        company_relation.color,
+        company_relation.color_line,
         company_relation.name,
         company_relation.create_time,
         company_relation.update_time
@@ -31,6 +41,21 @@
             </if>
             <if test="companyRelation.type != null and companyRelation.type  != ''">
                 and company_relation.type = #{companyRelation.type}
+            </if>
+            <if test="companyRelation.x != null and companyRelation.x  != ''">
+                and company_relation.x = #{companyRelation.x}
+            </if>
+            <if test="companyRelation.y != null and companyRelation.y  != ''">
+                and company_relation.y = #{companyRelation.y}
+            </if>
+            <if test="companyRelation.targetId != null and companyRelation.targetId  != ''">
+                and company_relation.target_id = #{companyRelation.targetId}
+            </if>
+            <if test="companyRelation.color != null and companyRelation.color  != ''">
+                and company_relation.color = #{companyRelation.color}
+            </if>
+            <if test="companyRelation.colorLine != null and companyRelation.colorLine  != ''">
+                and company_relation.color_line = #{companyRelation.colorLine}
             </if>
             <if test="companyRelation.name != null and companyRelation.name  != ''">
                 and company_relation.name = #{companyRelation.name}

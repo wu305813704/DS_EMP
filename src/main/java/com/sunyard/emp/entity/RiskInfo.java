@@ -8,24 +8,23 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 企业利润信息
+ * 企业风险信息
  *
  * @author KouKi
- * @version 2021-01-31 17:33:31
+ * @version 2021-01-31 13:53:15
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@TableName("company_profit_info")
-@ApiModel(description = "企业利润信息实体")
-public class CompanyProfitInfo extends Model<CompanyProfitInfo> {
+@TableName("risk_info")
+@ApiModel(description = "企业风险信息实体")
+public class RiskInfo extends Model<RiskInfo> {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -35,20 +34,45 @@ public class CompanyProfitInfo extends Model<CompanyProfitInfo> {
     @ApiModelProperty(value = "")
     private Long id;
     /**
-     * 企业注册号
+     * 注册号
      */
-    @ApiModelProperty(value = "企业注册号")
+    @ApiModelProperty(value = "注册号")
     private String regNo;
     /**
-     * 月份
+     * 行政处罚历史
      */
-    @ApiModelProperty(value = "月份")
-    private String profitMonth;
+    @ApiModelProperty(value = "行政处罚历史")
+    private Integer punishmentHistory;
     /**
-     * 利润
+     * 财产风险
      */
-    @ApiModelProperty(value = "利润")
-    private BigDecimal profitAmt;
+    @ApiModelProperty(value = "财产风险")
+    private Integer propertyRisk;
+    /**
+     * 股权风险
+     */
+    @ApiModelProperty(value = "股权风险")
+    private Integer equityRisk;
+    /**
+     * 经营异常
+     */
+    @ApiModelProperty(value = "经营异常")
+    private Integer abnormalOperation;
+    /**
+     * 变更信息
+     */
+    @ApiModelProperty(value = "变更信息")
+    private Integer changeInformation;
+    /**
+     * 失信被执行人
+     */
+    @ApiModelProperty(value = "失信被执行人")
+    private Integer brokenPromise;
+    /**
+     * 被执行人信息
+     */
+    @ApiModelProperty(value = "被执行人信息")
+    private Integer brokenPromiseInfo;
     /**
      *
      */

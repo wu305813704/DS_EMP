@@ -1,9 +1,12 @@
 package com.sunyard.emp.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sunyard.emp.entity.CompanyDetail;
 import com.sunyard.emp.entity.CompanyInfo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
+import java.util.Map;
 
 /**
  * 企业基本信息
@@ -19,5 +22,9 @@ public interface CompanyInfoService extends IService<CompanyInfo> {
     * @return 根据查询条件查出的企业基本信息列表
     */
     IPage<CompanyInfo> queryList(Page<CompanyInfo> page, CompanyInfo companyInfo);
+
+    CompanyDetail companyDetail(String regNo);
+
+    Map<String, Long> industryType();
 }
 

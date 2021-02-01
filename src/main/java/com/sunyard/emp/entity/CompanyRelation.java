@@ -12,10 +12,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 企业关系
+ * 关系网络
  *
  * @author KouKi
- * @version 2021-01-26 16:51:12
+ * @version 2021-02-01 12:04:21
  */
 @Data
 @Builder
@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @TableName("company_relation")
-@ApiModel(description = "企业关系实体")
+@ApiModel(description = "关系网络实体")
 public class CompanyRelation extends Model<CompanyRelation> {
     private static final long serialVersionUID = 1L;
 
@@ -43,6 +43,31 @@ public class CompanyRelation extends Model<CompanyRelation> {
      */
     @ApiModelProperty(value = "类型")
     private String type;
+    /**
+     * x轴偏移(关系网络)
+     */
+    @ApiModelProperty(value = "x轴偏移(关系网络)")
+    private String x;
+    /**
+     * x轴偏移(关系网络)
+     */
+    @ApiModelProperty(value = "x轴偏移(关系网络)")
+    private String y;
+    /**
+     * 目标id
+     */
+    @ApiModelProperty(value = "目标id")
+    private String targetId;
+    /**
+     * 球体颜色
+     */
+    @ApiModelProperty(value = "球体颜色")
+    private String color;
+    /**
+     * 线颜色
+     */
+    @ApiModelProperty(value = "线颜色")
+    private String colorLine;
     /**
      * 关联人姓名
      */

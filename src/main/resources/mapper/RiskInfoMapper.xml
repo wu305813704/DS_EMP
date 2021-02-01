@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.RiskInfoMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.RiskInfo" id="riskInfoMap">
+            <result property="id" column="id"/>
+            <result property="regNo" column="reg_no"/>
+            <result property="punishmentHistory" column="punishment_history"/>
+            <result property="propertyRisk" column="property_risk"/>
+            <result property="equityRisk" column="equity_risk"/>
+            <result property="abnormalOperation" column="abnormal_operation"/>
+            <result property="changeInformation" column="change_information"/>
+            <result property="brokenPromise" column="broken_promise"/>
+            <result property="brokenPromiseInfo" column="broken_promise_info"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        risk_info.id,
+        risk_info.reg_no,
+        risk_info.punishment_history,
+        risk_info.property_risk,
+        risk_info.equity_risk,
+        risk_info.abnormal_operation,
+        risk_info.change_information,
+        risk_info.broken_promise,
+        risk_info.broken_promise_info,
+        risk_info.create_time,
+        risk_info.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="riskInfo.id != null and riskInfo.id  != ''">
+                and risk_info.id = #{riskInfo.id}
+            </if>
+            <if test="riskInfo.regNo != null and riskInfo.regNo  != ''">
+                and risk_info.reg_no = #{riskInfo.regNo}
+            </if>
+            <if test="riskInfo.punishmentHistory != null and riskInfo.punishmentHistory  != ''">
+                and risk_info.punishment_history = #{riskInfo.punishmentHistory}
+            </if>
+            <if test="riskInfo.propertyRisk != null and riskInfo.propertyRisk  != ''">
+                and risk_info.property_risk = #{riskInfo.propertyRisk}
+            </if>
+            <if test="riskInfo.equityRisk != null and riskInfo.equityRisk  != ''">
+                and risk_info.equity_risk = #{riskInfo.equityRisk}
+            </if>
+            <if test="riskInfo.abnormalOperation != null and riskInfo.abnormalOperation  != ''">
+                and risk_info.abnormal_operation = #{riskInfo.abnormalOperation}
+            </if>
+            <if test="riskInfo.changeInformation != null and riskInfo.changeInformation  != ''">
+                and risk_info.change_information = #{riskInfo.changeInformation}
+            </if>
+            <if test="riskInfo.brokenPromise != null and riskInfo.brokenPromise  != ''">
+                and risk_info.broken_promise = #{riskInfo.brokenPromise}
+            </if>
+            <if test="riskInfo.brokenPromiseInfo != null and riskInfo.brokenPromiseInfo  != ''">
+                and risk_info.broken_promise_info = #{riskInfo.brokenPromiseInfo}
+            </if>
+            <if test="riskInfo.createTime != null and riskInfo.createTime  != ''">
+                and risk_info.create_time = #{riskInfo.createTime}
+            </if>
+            <if test="riskInfo.updateTime != null and riskInfo.updateTime  != ''">
+                and risk_info.update_time = #{riskInfo.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="riskInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from risk_info
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

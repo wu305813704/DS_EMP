@@ -10,10 +10,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 /**
- * 企业利润
+ * 企业利润信息
  *
  * @author KouKi
- * @version 2021-01-26 17:11:18
+ * @version 2021-01-31 17:33:31
  */
 @Transactional
 @Service("companyProfitInfoService")

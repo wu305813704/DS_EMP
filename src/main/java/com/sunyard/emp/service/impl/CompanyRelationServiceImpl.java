@@ -10,10 +10,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 /**
- * 企业关系
+ * 关系网络
  *
  * @author KouKi
- * @version 2021-01-26 16:51:12
+ * @version 2021-02-01 12:04:21
  */
 @Transactional
 @Service("companyRelationService")

@@ -95,4 +95,16 @@ public class CompanyInfoController {
         return new CommonResponse<>(companyInfoService.removeById(id));
     }
 
+    @GetMapping("/companyDetail/{regNo}")
+    @ApiOperation(value = "企业详情")
+    public CommonResponse companyDetail(@PathVariable String regNo){
+        return new CommonResponse(companyInfoService.companyDetail(regNo));
+    }
+
+    @GetMapping("/industryType")
+    @ApiOperation(value = "行业分布")
+    public CommonResponse industryType(){
+        return new CommonResponse(companyInfoService.industryType());
+    }
+
 }
