@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.ProjectStatisticsDetailMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.ProjectStatisticsDetail" id="projectStatisticsDetailMap">
+            <result property="id" column="id"/>
+            <result property="type" column="type"/>
+            <result property="projectCj" column="project_cj"/>
+            <result property="projectSg" column="project_sg"/>
+            <result property="projectSw" column="project_sw"/>
+            <result property="projectTh" column="project_th"/>
+            <result property="projectTc" column="project_tc"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        project_statistics_detail.id,
+        project_statistics_detail.type,
+        project_statistics_detail.project_cj,
+        project_statistics_detail.project_sg,
+        project_statistics_detail.project_sw,
+        project_statistics_detail.project_th,
+        project_statistics_detail.project_tc,
+        project_statistics_detail.create_time,
+        project_statistics_detail.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="projectStatisticsDetail.id != null and projectStatisticsDetail.id  != ''">
+                and project_statistics_detail.id = #{projectStatisticsDetail.id}
+            </if>
+            <if test="projectStatisticsDetail.type != null and projectStatisticsDetail.type  != ''">
+                and project_statistics_detail.type = #{projectStatisticsDetail.type}
+            </if>
+            <if test="projectStatisticsDetail.projectCj != null and projectStatisticsDetail.projectCj  != ''">
+                and project_statistics_detail.project_cj = #{projectStatisticsDetail.projectCj}
+            </if>
+            <if test="projectStatisticsDetail.projectSg != null and projectStatisticsDetail.projectSg  != ''">
+                and project_statistics_detail.project_sg = #{projectStatisticsDetail.projectSg}
+            </if>
+            <if test="projectStatisticsDetail.projectSw != null and projectStatisticsDetail.projectSw  != ''">
+                and project_statistics_detail.project_sw = #{projectStatisticsDetail.projectSw}
+            </if>
+            <if test="projectStatisticsDetail.projectTh != null and projectStatisticsDetail.projectTh  != ''">
+                and project_statistics_detail.project_th = #{projectStatisticsDetail.projectTh}
+            </if>
+            <if test="projectStatisticsDetail.projectTc != null and projectStatisticsDetail.projectTc  != ''">
+                and project_statistics_detail.project_tc = #{projectStatisticsDetail.projectTc}
+            </if>
+            <if test="projectStatisticsDetail.createTime != null and projectStatisticsDetail.createTime  != ''">
+                and project_statistics_detail.create_time = #{projectStatisticsDetail.createTime}
+            </if>
+            <if test="projectStatisticsDetail.updateTime != null and projectStatisticsDetail.updateTime  != ''">
+                and project_statistics_detail.update_time = #{projectStatisticsDetail.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="projectStatisticsDetailMap">
+        select
+        <include refid="Base_Column_List"/>
+        from project_statistics_detail
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

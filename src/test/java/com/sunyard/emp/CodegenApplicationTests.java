@@ -27,8 +27,8 @@ public class CodegenApplicationTests {
         genConfig.setAuthor("KouKi");
         genConfig.setPackageName("com.sunyard.emp");
         //genConfig.setModuleName("accounts");
-        genConfig.setComments("企业税收排名");
-        genConfig.setTableName("company_revenue_rank");
+        genConfig.setComments("投资来源占比");
+        genConfig.setTableName("project_invest_proportion");
         genConfig.setTablePrefix("");
         byte[] data = sysGeneratorService.generatorCode(genConfig);
         FileUtils.forceMkdir(new File(GEN_PATH));
