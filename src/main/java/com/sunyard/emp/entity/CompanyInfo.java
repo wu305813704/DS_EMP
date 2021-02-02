@@ -68,12 +68,12 @@ public class CompanyInfo extends Model<CompanyInfo> {
      * 经度
      */
     @ApiModelProperty(value = "经度")
-    private String lng;
+    private BigDecimal lng;
     /**
      * 纬度
      */
     @ApiModelProperty(value = "纬度")
-    private String lat;
+    private BigDecimal lat;
     /**
      * 注册号
      */
