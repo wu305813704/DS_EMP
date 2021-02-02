@@ -9,6 +9,7 @@
             <result property="lng" column="lng"/>
             <result property="lat" column="lat"/>
             <result property="count" column="count"/>
+            <result property="color" column="color"/>
             <result property="createTime" column="create_time"/>
             <result property="updateTime" column="update_time"/>
     </resultMap>
@@ -18,6 +19,7 @@
         project_big_data.lng,
         project_big_data.lat,
         project_big_data.count,
+        project_big_data.color,
         project_big_data.create_time,
         project_big_data.update_time
     </sql>
@@ -34,6 +36,9 @@
             </if>
             <if test="projectBigData.count != null and projectBigData.count  != ''">
                 and project_big_data.count = #{projectBigData.count}
+            </if>
+            <if test="projectBigData.color != null and projectBigData.color  != ''">
+                and project_big_data.color = #{projectBigData.color}
             </if>
             <if test="projectBigData.createTime != null and projectBigData.createTime  != ''">
                 and project_big_data.create_time = #{projectBigData.createTime}

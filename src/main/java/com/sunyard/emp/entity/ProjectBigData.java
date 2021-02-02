@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * 项目大数据
  *
  * @author KouKi
- * @version 2021-02-02 11:32:39
+ * @version 2021-02-02 15:18:16
  */
 @Data
 @Builder
@@ -49,6 +49,11 @@ public class ProjectBigData extends Model<ProjectBigData> {
      */
     @ApiModelProperty(value = "数量")
     private Integer count;
+    /**
+     * 颜色
+     */
+    @ApiModelProperty(value = "颜色")
+    private String color;
     /**
      *
      */
