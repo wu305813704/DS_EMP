@@ -17,7 +17,7 @@ import java.util.Map;
  * 企业基本信息
  *
  * @author KouKi
- * @version  2021-01-27 16:26:39
+ * @version  2021-02-02 11:23:05
  */
 @Api(tags = "企业基本信息")
 @RestController
@@ -93,18 +93,6 @@ public class CompanyInfoController {
     @ApiOperation(value = "企业基本信息根据id删除")
     public CommonResponse delete(@PathVariable Long id) {
         return new CommonResponse<>(companyInfoService.removeById(id));
-    }
-
-    @GetMapping("/companyDetail/{regNo}")
-    @ApiOperation(value = "企业详情")
-    public CommonResponse companyDetail(@PathVariable String regNo){
-        return new CommonResponse(companyInfoService.companyDetail(regNo));
-    }
-
-    @GetMapping("/industryType")
-    @ApiOperation(value = "行业分布")
-    public CommonResponse industryType(){
-        return new CommonResponse(companyInfoService.industryType());
     }
 
 }

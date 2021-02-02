@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * 企业基本信息
  *
  * @author KouKi
- * @version 2021-01-27 16:26:39
+ * @version 2021-02-02 11:23:05
  */
 @Data
 @Builder
@@ -114,6 +114,16 @@ public class CompanyInfo extends Model<CompanyInfo> {
      */
     @ApiModelProperty(value = "占地面积(亩)")
     private BigDecimal mu;
+    /**
+     * 营业额
+     */
+    @ApiModelProperty(value = "营业额")
+    private BigDecimal turnover;
+    /**
+     * 是否是规上企业(1-是2-否)
+     */
+    @ApiModelProperty(value = "是否是规上企业(1-是2-否)")
+    private String comGs;
     /**
      *
      */

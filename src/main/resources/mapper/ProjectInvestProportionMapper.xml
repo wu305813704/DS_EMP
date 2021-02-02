@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.ProjectInvestProportionMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.ProjectInvestProportion" id="projectInvestProportionMap">
+            <result property="id" column="id"/>
+            <result property="folk" column="folk"/>
+            <result property="government" column="government"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        project_invest_proportion.id,
+        project_invest_proportion.folk,
+        project_invest_proportion.government,
+        project_invest_proportion.create_time,
+        project_invest_proportion.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="projectInvestProportion.id != null and projectInvestProportion.id  != ''">
+                and project_invest_proportion.id = #{projectInvestProportion.id}
+            </if>
+            <if test="projectInvestProportion.folk != null and projectInvestProportion.folk  != ''">
+                and project_invest_proportion.folk = #{projectInvestProportion.folk}
+            </if>
+            <if test="projectInvestProportion.government != null and projectInvestProportion.government  != ''">
+                and project_invest_proportion.government = #{projectInvestProportion.government}
+            </if>
+            <if test="projectInvestProportion.createTime != null and projectInvestProportion.createTime  != ''">
+                and project_invest_proportion.create_time = #{projectInvestProportion.createTime}
+            </if>
+            <if test="projectInvestProportion.updateTime != null and projectInvestProportion.updateTime  != ''">
+                and project_invest_proportion.update_time = #{projectInvestProportion.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="projectInvestProportionMap">
+        select
+        <include refid="Base_Column_List"/>
+        from project_invest_proportion
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>

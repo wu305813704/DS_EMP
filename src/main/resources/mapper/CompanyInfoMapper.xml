@@ -22,6 +22,8 @@
             <result property="industryType" column="industry_type"/>
             <result property="towns" column="towns"/>
             <result property="mu" column="mu"/>
+            <result property="turnover" column="turnover"/>
+            <result property="comGs" column="com_gs"/>
             <result property="createTime" column="create_time"/>
             <result property="updateTime" column="update_time"/>
     </resultMap>
@@ -44,6 +46,8 @@
         company_info.industry_type,
         company_info.towns,
         company_info.mu,
+        company_info.turnover,
+        company_info.com_gs,
         company_info.create_time,
         company_info.update_time
     </sql>
@@ -99,6 +103,12 @@
             </if>
             <if test="companyInfo.mu != null and companyInfo.mu  != ''">
                 and company_info.mu = #{companyInfo.mu}
+            </if>
+            <if test="companyInfo.turnover != null and companyInfo.turnover  != ''">
+                and company_info.turnover = #{companyInfo.turnover}
+            </if>
+            <if test="companyInfo.comGs != null and companyInfo.comGs  != ''">
+                and company_info.com_gs = #{companyInfo.comGs}
             </if>
             <if test="companyInfo.createTime != null and companyInfo.createTime  != ''">
                 and company_info.create_time = #{companyInfo.createTime}

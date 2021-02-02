@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.ProjectBigDataMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.ProjectBigData" id="projectBigDataMap">
+            <result property="id" column="id"/>
+            <result property="lng" column="lng"/>
+            <result property="lat" column="lat"/>
+            <result property="count" column="count"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        project_big_data.id,
+        project_big_data.lng,
+        project_big_data.lat,
+        project_big_data.count,
+        project_big_data.create_time,
+        project_big_data.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="projectBigData.id != null and projectBigData.id  != ''">
+                and project_big_data.id = #{projectBigData.id}
+            </if>
+            <if test="projectBigData.lng != null and projectBigData.lng  != ''">
+                and project_big_data.lng = #{projectBigData.lng}
+            </if>
+            <if test="projectBigData.lat != null and projectBigData.lat  != ''">
+                and project_big_data.lat = #{projectBigData.lat}
+            </if>
+            <if test="projectBigData.count != null and projectBigData.count  != ''">
+                and project_big_data.count = #{projectBigData.count}
+            </if>
+            <if test="projectBigData.createTime != null and projectBigData.createTime  != ''">
+                and project_big_data.create_time = #{projectBigData.createTime}
+            </if>
+            <if test="projectBigData.updateTime != null and projectBigData.updateTime  != ''">
+                and project_big_data.update_time = #{projectBigData.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="projectBigDataMap">
+        select
+        <include refid="Base_Column_List"/>
+        from project_big_data
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>
