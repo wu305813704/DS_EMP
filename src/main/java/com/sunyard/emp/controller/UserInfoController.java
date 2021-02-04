@@ -97,7 +97,12 @@ public class UserInfoController {
 
     @PostMapping("/login")
     public CommonResponse login(@RequestBody UserInfo userInfo) {
-        return new CommonResponse(userInfoService.login(userInfo));
+        try {
+            String token = userInfoService.login(userInfo);
+            return new CommonResponse(token);
+        } catch (Exception e) {
+            return new CommonResponse().fail(e);
+        }
     }
 
     @PostMapping("/logout")
