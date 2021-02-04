@@ -5,6 +5,10 @@ spring:
   profiles:
     active: local
   datasource:
+#    username: root
+#    password: sunyard@88
+#    url: jdbc:mysql://100.172.1.21:3306/ds_emp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true&serverTimezone=PRC&useSSL=false
+
     username: root
     password: Uvz6q8IA5UMQSUe0
     url: jdbc:mysql://172.1.2.113:3306/ds_emp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&allowMultiQueries=true&serverTimezone=PRC&useSSL=false

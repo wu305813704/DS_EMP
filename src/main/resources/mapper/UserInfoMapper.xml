@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunyard.emp.mapper.UserInfoMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.sunyard.emp.entity.UserInfo" id="userInfoMap">
+            <result property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result property="password" column="password"/>
+            <result property="nickname" column="nickname"/>
+            <result property="createTime" column="create_time"/>
+            <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_info.id,
+        user_info.username,
+        user_info.password,
+        user_info.nickname,
+        user_info.create_time,
+        user_info.update_time
+    </sql>
+
+    <sql id="Example_If_Clause">
+            <if test="userInfo.id != null and userInfo.id  != ''">
+                and user_info.id = #{userInfo.id}
+            </if>
+            <if test="userInfo.username != null and userInfo.username  != ''">
+                and user_info.username = #{userInfo.username}
+            </if>
+            <if test="userInfo.password != null and userInfo.password  != ''">
+                and user_info.password = #{userInfo.password}
+            </if>
+            <if test="userInfo.nickname != null and userInfo.nickname  != ''">
+                and user_info.nickname = #{userInfo.nickname}
+            </if>
+            <if test="userInfo.createTime != null and userInfo.createTime  != ''">
+                and user_info.create_time = #{userInfo.createTime}
+            </if>
+            <if test="userInfo.updateTime != null and userInfo.updateTime  != ''">
+                and user_info.update_time = #{userInfo.updateTime}
+            </if>
+    </sql>
+
+    <select id="query" resultMap="userInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        <where>
+            <include refid="Example_If_Clause"/>
+        </where>
+    </select>
+
+</mapper>
